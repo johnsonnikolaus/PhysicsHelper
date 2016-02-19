@@ -42,7 +42,9 @@
             this.unitDropDown = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.timeUnit = new System.Windows.Forms.ComboBox();
-            this.resultLabel = new System.Windows.Forms.Label();
+            this.velResultLabel = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.speedResultLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.timeField)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.initialPosField)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.finalPosField)).BeginInit();
@@ -116,6 +118,7 @@
             // 
             // initialPosField
             // 
+            this.initialPosField.DecimalPlaces = 2;
             this.initialPosField.Increment = new decimal(new int[] {
             1,
             0,
@@ -127,13 +130,20 @@
             0,
             0,
             0});
+            this.initialPosField.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
             this.initialPosField.Name = "initialPosField";
             this.initialPosField.Size = new System.Drawing.Size(52, 20);
             this.initialPosField.TabIndex = 7;
             this.initialPosField.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
+            this.initialPosField.ValueChanged += new System.EventHandler(this.initialPosField_ValueChanged);
             // 
             // finalPosField
             // 
+            this.finalPosField.DecimalPlaces = 2;
             this.finalPosField.Increment = new decimal(new int[] {
             1,
             0,
@@ -145,10 +155,16 @@
             0,
             0,
             0});
+            this.finalPosField.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
             this.finalPosField.Name = "finalPosField";
             this.finalPosField.Size = new System.Drawing.Size(52, 20);
             this.finalPosField.TabIndex = 8;
             this.finalPosField.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
+            this.finalPosField.ValueChanged += new System.EventHandler(this.finalPosField_ValueChanged);
             // 
             // deltaField
             // 
@@ -164,6 +180,11 @@
             0,
             0,
             0});
+            this.deltaField.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
             this.deltaField.Name = "deltaField";
             this.deltaField.Size = new System.Drawing.Size(56, 20);
             this.deltaField.TabIndex = 9;
@@ -223,21 +244,41 @@
             this.timeUnit.TabIndex = 14;
             this.timeUnit.Text = "sec";
             // 
-            // resultLabel
+            // velResultLabel
             // 
-            this.resultLabel.AutoSize = true;
-            this.resultLabel.Location = new System.Drawing.Point(72, 98);
-            this.resultLabel.Name = "resultLabel";
-            this.resultLabel.Size = new System.Drawing.Size(37, 13);
-            this.resultLabel.TabIndex = 15;
-            this.resultLabel.Text = "Result";
+            this.velResultLabel.AutoSize = true;
+            this.velResultLabel.Location = new System.Drawing.Point(72, 98);
+            this.velResultLabel.Name = "velResultLabel";
+            this.velResultLabel.Size = new System.Drawing.Size(37, 13);
+            this.velResultLabel.TabIndex = 15;
+            this.velResultLabel.Text = "Result";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(134, 98);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(47, 13);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Speed =";
+            // 
+            // speedResultLabel
+            // 
+            this.speedResultLabel.AutoSize = true;
+            this.speedResultLabel.Location = new System.Drawing.Point(187, 98);
+            this.speedResultLabel.Name = "speedResultLabel";
+            this.speedResultLabel.Size = new System.Drawing.Size(37, 13);
+            this.speedResultLabel.TabIndex = 17;
+            this.speedResultLabel.Text = "Result";
             // 
             // VelocityCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(273, 128);
-            this.Controls.Add(this.resultLabel);
+            this.Controls.Add(this.speedResultLabel);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.velResultLabel);
             this.Controls.Add(this.timeUnit);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.unitDropDown);
@@ -253,7 +294,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "VelocityCalculator";
-            this.Text = "Velocity Calculator";
+            this.Text = "Speed/Velocity";
             ((System.ComponentModel.ISupportInitialize)(this.timeField)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.initialPosField)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.finalPosField)).EndInit();
@@ -278,7 +319,9 @@
         private System.Windows.Forms.ComboBox unitDropDown;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox timeUnit;
-        private System.Windows.Forms.Label resultLabel;
+        private System.Windows.Forms.Label velResultLabel;
         private System.Windows.Forms.NumericUpDown deltaField;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label speedResultLabel;
     }
 }
